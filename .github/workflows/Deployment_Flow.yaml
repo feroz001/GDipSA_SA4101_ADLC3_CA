@@ -50,11 +50,11 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Matriculation:* ${{vars.MATRICULATIONNUMBER}}"
+                      "text": "*Email:* ${{vars.EMAIL}}"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Email:* ${{vars.EMAIL}}"
+                      "text": "*Matriculation:* ${{vars.MATRICULATIONNUMBER}}"
                     },
                     {
                       "type": "mrkdwn",
