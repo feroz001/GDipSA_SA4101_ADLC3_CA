@@ -6,8 +6,8 @@ on:
     - '!*-*'
 
 jobs:
-  DeployAndRun:
-  runs-on: ubuntu-latest
+  DeploymenFlow:
+    runs-on: ubuntu-latest
 
   steps:
     - name: test
