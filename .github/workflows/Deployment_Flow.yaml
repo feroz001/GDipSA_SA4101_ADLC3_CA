@@ -4,18 +4,27 @@ on:
     branches:
     - 'release/v*.*'
     - '!*-*'
+    comments:
+    - '!#NORUN'
 
 jobs:
   DeploymenFlow:
     runs-on: ubuntu-latest
     steps:
       
+      # - name: Run Go
+      #   uses: actions/checkout/@v3
+      #   uses: actions/setup-go@v4
+      #   with: 
+      #     go-version: '1.14'
+      #     check-latest: true
+      # - run: go run main.go
+      
       # - name: Deploy app to railway
       #   uses: bervProject/railway-deploy@main
       #   with:
-      #     railway_token: ${{}}
+      #     railway_token: ${{ }}
       #     service: "my-service"
-      #   run: 
 
       - name: Send block message to slack
         id: slack
@@ -37,15 +46,15 @@ jobs:
                   "fields": [
                     {
                       "type": "mrkdwn",
-                      "text": "*Name:* test"
+                      "text": "*Name:* ${{vars.NAME}}"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Matriculation:* test"
+                      "text": "*Matriculation:* ${{vars.MATRICULATIONNUMBER}}"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Email:* test"
+                      "text": "*Email:* ${{vars.EMAIL}}"
                     },
                     {
                       "type": "mrkdwn",
