@@ -23,7 +23,7 @@ jobs:
         with:
           # For posting a rich message using Block Kit
           payload: |
-          {
+            {
               "blocks":[
                  {
                     "type": "section",
@@ -71,7 +71,7 @@ jobs:
                   }
                 } 
               ]
-          }
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL1 }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
