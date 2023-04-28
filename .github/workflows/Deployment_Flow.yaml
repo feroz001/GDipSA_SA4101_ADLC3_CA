@@ -8,7 +8,6 @@ on:
 jobs:
   DeploymenFlow:
     runs-on: ubuntu-latest
-
-  steps:
-    - name: print the files in current directory
-      run: ls -la
+    steps:
+      - name: print the files in current directory
+        run: ls -la
