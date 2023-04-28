@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
   steps:
-    - name: test
-      run: echo "This workflow shoud run"
+    - name: print the files in current directory
+      run: ls -la
