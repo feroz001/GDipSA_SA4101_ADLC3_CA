@@ -9,5 +9,71 @@ jobs:
   DeploymenFlow:
     runs-on: ubuntu-latest
     steps:
-      - name: print the files in current directory
-        run: ls -la
+      
+      # - name: Deploy app to railway
+      #   uses: bervProject/railway-deploy@main
+      #   with:
+      #     railway_token: ${{}}
+      #     service: "my-service"
+      #   run: 
+
+      - name: Send block message to slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # For posting a rich message using Block Kit
+          payload: |
+          {
+              "blocks":[
+                 {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*DipSA 56 CI/CD Submission*\n"
+                    },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Name:* ${{ vars.NAME }}"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Matriculation:* ${{ vars.MATRICULATIONNUMBER }}"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Email:* ${{vars.EMAIL}}"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Repository:* \n test Repo"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "Test rail link"
+                    },
+                    "accessory": {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Go",
+                        "emoji": false
+                      },
+                      "value": "click_me_123",
+                      "url": "https://www.google.com.sg/",
+                      "action_id": "button-action" 
+                  }
+                } 
+              ]
+          }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL1 }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+      
