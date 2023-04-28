@@ -11,4 +11,8 @@ jobs:
 
   steps:
     - name: test
-    - run: echo "Pipeline triggered"
+      run: echo "Pipeline triggered"
+
+  steps: 
+    - name: release beta flow
+      run: echo "this shoudn't work"
