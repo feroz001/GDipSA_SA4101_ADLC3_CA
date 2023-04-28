@@ -2,7 +2,7 @@ name: Deploy to Railway and Submit Slack Notification
 on:
   push:
     branches:
-    - '*feature/v*'
+    - 'release/v*.*'
     - '!*-*'
 
 jobs:
