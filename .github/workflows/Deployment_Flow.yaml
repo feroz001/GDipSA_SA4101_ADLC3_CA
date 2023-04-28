@@ -2,13 +2,12 @@ name: Deploy to Railway and Submit Slack Notification
 on:
   push:
     branches:
-    - '*feature/v*'
+    - 'release/v*.*'
     - '!*-*'
 
 jobs:
-  DeployAndRun:
-  runs-on: ubuntu-latest
-
-  steps:
-    - name: test
-    - run: echo "Pipeline triggered"
+  DeploymenFlow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print the files in current directory
+        run: ls -la
