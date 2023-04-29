@@ -12,14 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-      # - name: Run Go
-      #   uses: actions/checkout/@v3
-      #   uses: actions/setup-go@v4
-      #   with: 
-      #     go-version: '1.14'
-      #     check-latest: true
-      # - run: go run main.go
-      
       - name: Deploy app to railway
         uses: bervProject/railway-deploy@main
         with:
@@ -66,7 +58,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "${{RAILWAY_URL}}"
+                    "text": "${{ vars.RAILWAY_URL }}"
                   },
                   "accessory": {
                     "type": "button",
@@ -76,14 +68,14 @@ jobs:
                       "emoji": false
                     },
                     "value": "click_me_123",
-                    "url": "$RAILWAY_URL",
+                    "url": " vars.RAILWAY_URL ",
                     "action_id": "button-action"
                   }
                 }
               ]
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ SECRET_SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SECRET_SLACK_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
       
