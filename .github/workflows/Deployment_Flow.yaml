@@ -14,8 +14,9 @@ jobs:
       
       - name: Deploy app to railway
         uses: bervProject/railway-deploy@main
-        with:
+        env:
           railway_token: ${{ secrets.RAILWAY_TOKEN }}
+        with:
           service: "avid-root"
 
       - name: Send block message to slack
@@ -57,7 +58,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": " ${{vars.RAILWAY_URL}} "
+                    "text": "${{vars.RAILWAY_URL}}"
                   },
                   "accessory": {
                     "type": "button",
@@ -67,7 +68,7 @@ jobs:
                       "emoji": true
                     },
                     "value": "click_me_123",
-                    "url": "vars.RAILWAY_URL",
+                    "url": "${{vars.RAILWAY_URL}}",
                     "action_id": "button-action"
                   }
                 }
