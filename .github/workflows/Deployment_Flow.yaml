@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-      - name: Deploy app to railway
-        uses: bervProject/railway-deploy@main
-        env:
-          railway_token: ${{ secrets.RAILWAY_TOKEN }}
-        with:
-          service: "avid-root"
+      # - name: Deploy app to railway
+      #   uses: bervProject/railway-deploy@main
+      #   env:
+      #     railway_token: ${{ secrets.RAILWAY_TOKEN }}
+      #   with:
+      #     service: "avid-root"
 
       - name: Send block message to slack
         id: slack
