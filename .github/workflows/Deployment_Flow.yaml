@@ -22,7 +22,57 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          payload-file-path: "./home/runner/work/GDipSA_SA4101_ADLC3_CA/payload-slack-content.json"
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*DipSA 56 CI/CD Submission*"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Name:* ${{vars.NAME}}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Email:* ${{vars.EMAIL}}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Matriculation:* ${{vars.MATNUM}}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Repository:*\n ${{github.repositoryUrl}}"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": " ${{vars.RAILWAY_URL}} "
+                  },
+                  "accessory": {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Go",
+                      "emoji": true
+                    },
+                    "value": "click_me_123",
+                    "url": "vars.RAILWAY_URL",
+                    "action_id": "button-action"
+                  }
+                }
+              ]
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.PERSONAL_SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
