@@ -16,7 +16,7 @@ jobs:
         uses: bervProject/railway-deploy@main
         with:
           railway_token: ${{ secrets.RAILWAY_SECRET_TOKEN }}
-          service: "my-service"
+          service: "avid-root"
 
       - name: Send block message to slack
         id: slack
