@@ -20,11 +20,11 @@ jobs:
           check-latest: true
       - run: go run main.go
       
-      # - name: Deploy app to railway
-      #   uses: bervProject/railway-deploy@main
-      #   with:
-      #     railway_token: ${{ }}
-      #     service: "my-service"
+      - name: Deploy app to railway
+        uses: bervProject/railway-deploy@main
+        with:
+          railway_token: ${{ secrets.RAILWAY_SECRET_TOKEN }}
+          service: "my-service"
 
       - name: Send block message to slack
         id: slack
@@ -46,19 +46,19 @@ jobs:
                   "fields": [
                     {
                       "type": "mrkdwn",
-                      "text": "*Name:* ${{vars.NAME}}"
+                      "text": "*Name:* ${{ vars.NAME }}"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Email:* ${{vars.EMAIL}}"
+                      "text": "*Email:* ${{ vars.EMAIL }}"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Matriculation:* ${{vars.MATRICULATIONNUMBER}}"
+                      "text": "*Matriculation:* ${{ vars.MAT_NUM }}"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Repository:* \n test link "
+                      "text": "*Repository:* \n ${{ github.repositoryUrl }}"
                     }
                   ]
                 },
@@ -66,7 +66,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Railway URL goes here."
+                    "text": "${{RAILWAY_URL}}"
                   },
                   "accessory": {
                     "type": "button",
@@ -76,14 +76,14 @@ jobs:
                       "emoji": false
                     },
                     "value": "click_me_123",
-                    "url": "https://google.com",
+                    "url": "${{RAILWAY_URL}}",
                     "action_id": "button-action"
                   }
                 }
               ]
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL1 }}
+          SLACK_WEBHOOK_URL: ${{ SECRET_SLACK_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
       
