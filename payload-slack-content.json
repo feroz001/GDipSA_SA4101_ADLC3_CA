@@ -1,0 +1,50 @@
+{
+    "blocks": [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*DipSA 56 CI/CD Submission*"
+        }
+      },
+      {
+        "type": "section",
+        "fields": [
+          {
+            "type": "mrkdwn",
+            "text": "*Name:* MUHAMMAD FEROZ BIN JAMALULLAH"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Email:* E1112896@NUS.EDU"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Matriculation:* A0269513Y"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Repository:*\n Github repo link goes here "
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": " Railway domain link goes here "
+        },
+        "accessory": {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Go",
+            "emoji": true
+          },
+          "value": "click_me_123",
+          "url": "https://google.com",
+          "action_id": "button-action"
+        }
+      }
+    ]
+}
