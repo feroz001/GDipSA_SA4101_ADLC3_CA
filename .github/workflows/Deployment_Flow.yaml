@@ -2,7 +2,7 @@ name: Deploy to Railway and Submit Slack Notification
 on:
   push:
     branches:
-    - 'release/v*.*'
+    - 'release/v[0-9]+.[0-9]+'
     - '!*-*'
     comments:
     - '!#NORUN'
@@ -12,18 +12,67 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
+      - name: Checkout 
+        uses: actions/checkout@v3
+
       - name: Deploy app to railway
         uses: bervProject/railway-deploy@main
         with:
           railway_token: ${{ secrets.RAILWAY_TOKEN }}
           service: "avid-root"
-          detach: true
 
       - name: Send block message to slack
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          payload-file-path: "./payload-slack-content.json"
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*DipSA 56 CI/CD Submission*"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Name:* ${{vars.NAME}}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Email:* ${{vars.EMAIL}}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Matriculation:* ${{vars.MATRICULATION_NUMBER}}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Repository:*\n ${{github.server_url}}/${{github.repository}} "
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "https://${{vars.RAILWAY_URL}}"
+                  },
+                  "accessory": {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Go"
+                    },
+                    "url": "https://${{vars.RAILWAY_URL}}"
+                  }
+                }
+              ]
+            }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.PERSONAL_SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_TEST_SUBMISSION_WEBHOOK}}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
