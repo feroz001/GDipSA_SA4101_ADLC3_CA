@@ -53,9 +53,27 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Repository:*\n ${{github.repositoryUrl}}"
+                      "text": "*Repository:*\n ${{github.server_)url}}/${{github.repository}} "
                     }
                   ]
+                }
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{vars.RAILWAY_URL}}"
+                  },
+                  "accessory": {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Go",
+                      "emoji": true
+                    },
+                    "value": "click_me_123",
+                    "url": "${{vars.RAILWAY_URL}}",
+                    "action_id": "button-action"
+                  }
                 }
               ]
             }
