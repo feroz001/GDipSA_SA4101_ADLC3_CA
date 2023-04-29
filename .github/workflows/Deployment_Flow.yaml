@@ -14,9 +14,10 @@ jobs:
       
       - name: Deploy app to railway
         uses: bervProject/railway-deploy@main
-          with:
-            railway_token: ${{ secrets.SECRET_RAILWAY_TOKEN }}
-            service: "avid-root"
+        with:
+          railway_token: ${{ secrets.RAILWAY_TOKEN }}
+          service: "avid-root"
+          detach: true
 
       - name: Send block message to slack
         id: slack
