@@ -70,6 +70,7 @@ jobs:
                       "text": "Go"
                     },
                     "url": "${{vars.RAILWAY_URL}}"
+                  }
                 }
               ]
             }
