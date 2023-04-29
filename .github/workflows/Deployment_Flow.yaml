@@ -11,12 +11,15 @@ jobs:
   DeploymenFlow:
     runs-on: ubuntu-latest
     steps:
-      
+      - name: Checkout 
+        uses: actions/checkout@v3
+
       - name: Deploy app to railway
         uses: bervProject/railway-deploy@main
         with:
           railway_token: ${{ secrets.RAILWAY_TOKEN }}
           service: "avid-root"
+
 
       - name: Send block message to slack
         id: slack
