@@ -57,6 +57,20 @@ jobs:
                     }
                   ]
                 }
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{vars.RAILWAY_URL}}"
+                  },
+                  "accessory": {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Go"
+                    },
+                    "url": "${{vars.RAILWAY_URL}}"
+                }
               ]
             }
         env:
