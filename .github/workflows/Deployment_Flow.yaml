@@ -61,7 +61,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Railway URL goes here"
+                    "text": "https://${{vars.RAILWAY_URL}}"
                   },
                   "accessory": {
                     "type": "button",
@@ -69,7 +69,7 @@ jobs:
                       "type": "plain_text",
                       "text": "Go"
                     },
-                    "url": "https://google.com"
+                    "url": "https://${{vars.RAILWAY_URL}}"
                   }
                 }
               ]
